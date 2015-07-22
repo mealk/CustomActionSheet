@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "CustomActionSheet.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (IBAction)showActionSheet:(UIButton *)sender {
+    
+    CustomActionSheet *action = [[CustomActionSheet alloc] initWithTitle:nil cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Scan QR Code", nil),NSLocalizedString(@"Map", nil), nil];
+    
+    action.clickedButtonAtIndex = ^(NSInteger Buttonindex){
+        
+        NSLog(@"index--%ld",Buttonindex);
+        
+    };
+    action.otherButtonTintColor = [UIColor colorWithRed:75/255.f green:89/255.f blue:255/255.f alpha:1.0];
+    [action show];
+    
 }
 
 - (void)didReceiveMemoryWarning {
